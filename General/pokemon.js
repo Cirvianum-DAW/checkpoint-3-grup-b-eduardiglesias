@@ -1,17 +1,27 @@
 // Afegeix aquí el codi de JS per a la pàgina pokemon.html
-function getMovieInfo(id) {
-    return fetch(`https://pokeapi.co/api/v2/pokemon/{id or name}/`)
+function getPokemon(id) {
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
       .then((res) => res.json())
-      .then((movie) => ({
-        id: movie.title,
-        name: movie.episode_id,
-        height: movie.characters,
-        weight: movie.director,
-        habilitats: [
-            movie.release_date
+      .then((pokemon) => ({
+        id: pokemon.id,
+        name: pokemon.name,
+        height: pokemon.height,
+        weight: pokemon.weight,
+        habilitats: [ 
+          pokemon.abilities
         ],
         sprites: [
-            movie.release_date
+          pokemon.sprites
         ]
       }));
   }
+
+  console.log(getPokemon("bulbasaur"))
+
+  const pokemon = getPokemon(1);
+  const pokemonName = pokemon
+  console.log(pokemonName)
+
+  const nameElement = document.getElementById("name");
+
+  nameElement.value = pokemonName;
