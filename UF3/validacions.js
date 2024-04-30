@@ -34,3 +34,32 @@ function validateName() {
 }
 
 // addEventListeners...
+
+document.querySelector("form").addEventListener("submit", function (event) {
+  const name = document.getElementById("name").value;
+  const surname = document.getElementById("surname").value;
+  const email = document.getElementById("email").value;
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+
+  fullNameRegex = /[0-9]/;
+
+  if (name.length < 3 || name.length > 50) {
+    alert('El nom ha de tenir com a mínim 3 caràcters i com a màxim 50.')
+  }else if(!fullNameRegex.test(name)){
+    alert('El nom no pot contenir números.')
+  }
+
+  if (surname.length < 3 || surname.length > 50) {
+    alert('El cognom ha de tenir com a mínim 3 caràcters i com a màxim 50.')
+  }else if(!fullNameRegex.test(surname)){
+    alert('El cognom no pot contenir números.')
+  }
+
+  emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+
+  if (!emailRegex.test(email)) {
+    alert('El email no és correcte.')
+  }
+
+});
